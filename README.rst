@@ -20,6 +20,19 @@ cursor positioning) work under MS Windows.
 `Github for source <https://github.com/Kseen715/ksilorama>`_ |
 `Ksilorama for enterprise on Tidelift <https://github.com/Kseen715/ksilorama/blob/master/ENTERPRISE.md>`_
 
+Warning
+-------
+
+.. warning::
+    Ksilorama is a fork of `colorama <https://pypi.org/project/colorama/>`_. 
+    This fork was created because the original project is no longer maintained.
+    The goal of ksilorama is to fullfill ANSI escape character sequences.
+
+Here are the differences between Ksilorama and colorama:
+
+- None
+
+
 Installation
 ------------
 
