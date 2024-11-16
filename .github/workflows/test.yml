@@ -15,21 +15,21 @@ jobs:
         os: [ubuntu-latest, macos-latest, windows-latest]
         include:
           # Add new helper variables to existing jobs
-          - {python-version: "pypy-2.7", toxenv: "pypy", architecture: "x64"}
-          - {python-version: "pypy-3.8", toxenv: "pypy3", architecture: "x64"}
-          - {python-version: "3.7", toxenv: "py37", architecture: "x64"}
-          - {python-version: "3.8", toxenv: "py38", architecture: "x64"}
-          - {python-version: "3.9", toxenv: "py39", architecture: "x64"}
-          - {python-version: "3.10", toxenv: "py310", architecture: "x64"}
-          - {python-version: "3.11", toxenv: "py311", architecture: "x64"}
-          - {python-version: "3.12", toxenv: "py312", architecture: "x64"}
-          - {python-version: "3.13", toxenv: "py313", architecture: "x64"}
-          - {python-version: "3.8", toxenv: "py38", architecture: "arm64"}
-          - {python-version: "3.9", toxenv: "py39", architecture: "arm64"}
-          - {python-version: "3.10", toxenv: "py310", architecture: "arm64"}
-          - {python-version: "3.11", toxenv: "py311", architecture: "arm64"}
-          - {python-version: "3.12", toxenv: "py312", architecture: "arm64"}
-          - {python-version: "3.13", toxenv: "py313", architecture: "arm64"}
+          - {python-version: "pypy-2.7", toxenv: "pypy"}
+          - {python-version: "pypy-3.8", toxenv: "pypy3"}
+          - {python-version: "3.7", toxenv: "py37"}
+          - {python-version: "3.8", toxenv: "py38"}
+          - {python-version: "3.9", toxenv: "py39"}
+          - {python-version: "3.10", toxenv: "py310"}
+          - {python-version: "3.11", toxenv: "py311"}
+          - {python-version: "3.12", toxenv: "py312"}
+          - {python-version: "3.13", toxenv: "py313"}
+          - {python-version: "3.8", toxenv: "py38"}
+          - {python-version: "3.9", toxenv: "py39"}
+          - {python-version: "3.10", toxenv: "py310"}
+          - {python-version: "3.11", toxenv: "py311"}
+          - {python-version: "3.12", toxenv: "py312"}
+          - {python-version: "3.13", toxenv: "py313"}
 
     steps:
       - uses: actions/checkout@v3
@@ -42,7 +42,6 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
-          architecture: ${{ matrix.architecture }}
           allow-prereleases: true
 
       - name: Get pip cache dir
