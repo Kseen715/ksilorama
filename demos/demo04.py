@@ -5,7 +5,7 @@
 from __future__ import print_function
 import sys
 import fixpath
-from colorama import init, Fore
+from ksilorama import init, Fore
 
 init()
 print(Fore.GREEN + 'GREEN set on stdout. ', end='')

@@ -1,4 +1,7 @@
-0.4.6 Current release
+0.4.7 Current release
+  * Fix of all known issues with Github Actions CI, which was failing to build
+    on all platforms.
+0.4.6
   * https://github.com/tartley/colorama/pull/139 Add alternative to 'init()',
     called 'just_fix_windows_console'. This fixes many longstanding problems
     with 'init', such as working incorrectly on modern Windows terminals, and

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Copyright Jonathan Hartley 2013. BSD 3-Clause license, see LICENSE file.
 
-# Script to demonstrate features of colorama.
+# Script to demonstrate features of ksilorama.
 
 # This demo is also used to verify correctness visually, because we don't have
 # automated tests.
@@ -24,14 +24,14 @@ python demo04.py 2> demo04.out
 cat demo04.out
 rm -f demo04.out
 
-# Demonstrate the difference between colorama initialized with wrapping on and off.
+# Demonstrate the difference between ksilorama initialized with wrapping on and off.
 python demo05.py
 
 # Skip demo06
 # It is too visually disruptive,
 # making it hard to see whether any of the demos are working correctly.
 
-# Demonstrate cursor relative movement: UP, DOWN, FORWARD, and BACK in colorama.CURSOR
+# Demonstrate cursor relative movement: UP, DOWN, FORWARD, and BACK in ksilorama.CURSOR
 python demo07.py
 
 # Demonstrate the use of a context manager instead of manually using init and deinit

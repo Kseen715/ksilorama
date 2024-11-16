@@ -1,13 +1,13 @@
 from __future__ import print_function
 import fixpath
-import colorama
+import ksilorama
 
-# Demonstrate cursor relative movement: UP, DOWN, FORWARD, and BACK in colorama.CURSOR
+# Demonstrate cursor relative movement: UP, DOWN, FORWARD, and BACK in ksilorama.CURSOR
 
-up = colorama.Cursor.UP
-down = colorama.Cursor.DOWN
-forward = colorama.Cursor.FORWARD
-back = colorama.Cursor.BACK
+up = ksilorama.Cursor.UP
+down = ksilorama.Cursor.DOWN
+forward = ksilorama.Cursor.FORWARD
+back = ksilorama.Cursor.BACK
 
 def main():
     """
@@ -16,7 +16,7 @@ def main():
     aba
     3a4
     """
-    colorama.just_fix_windows_console()
+    ksilorama.just_fix_windows_console()
     print("aaa")
     print("aaa")
     print("aaa")

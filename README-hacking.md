@@ -1,8 +1,8 @@
-# Colorama Development
+# Ksilorama Development
 
 Help and fixes are welcome!
 
-Although Colorama has no requirements other than the Python standard library,
+Although Ksilorama has no requirements other than the Python standard library,
 development requires some Python packages, which are captured in
 requirements-dev.txt.
 
@@ -14,7 +14,7 @@ Makefile targets work on Mac too.
 
 ## Desired changes
 
-Colorama is unexpectedly popular, and is now a transitive dependency of many
+Ksilorama is unexpectedly popular, and is now a transitive dependency of many
 popular and high profile projects. If we break backwards compatibility, even in a
 subtle way, we can break applications - or pip installs - for lots of people.
 
@@ -31,17 +31,17 @@ introduced.
 
 This is especially true if they are new ways to generate ANSI codes (e.g.
 context managers for handling Fore, Back or Style changes.), since it has
-always been Colorama's stance that if you want to print ANSI codes, then yes
+always been Ksilorama's stance that if you want to print ANSI codes, then yes
 we can help out with that in a rudimentary way, but if you want to do advanced
 things, then you should be using a different library that specializes in that,
 such as Termcolor, Blessings, or Rich. These libraries are much better than
-Colorama at generating ANSI codes for colors and the like, and probably
-already include the feature you are trying to add to Colorama, plus many
+Ksilorama at generating ANSI codes for colors and the like, and probably
+already include the feature you are trying to add to Ksilorama, plus many
 more.
 
-In addition to using those libraries, if you call colorama.init(), then your
+In addition to using those libraries, if you call ksilorama.init(), then your
 fancy new colors, etc, will also work on Windows. This is the main purpose
-of Colorama.
+of Ksilorama.
 
 The kinds of submissions we would encourage work towards that goal, or fix
 bugs, or improve compatibility across operating systems or environments.
@@ -71,7 +71,7 @@ target.
    previous version number.
 
 2. First we'll make a candidate release. Ensure  the '.rc1' suffix is
-   present on `__version__` in `colorama/__init.py__.py`, eg:
+   present on `__version__` in `ksilorama/__init.py__.py`, eg:
 
         __version__ = '0.4.6rc1'
 
@@ -90,7 +90,7 @@ target.
 
 4. Verify you're all committed, merged to master.
 
-5. Tag the current commit with the `__version__` from `colorama/__init__.py`.
+5. Tag the current commit with the `__version__` from `ksilorama/__init__.py`.
    We should start using
    [annotated tags for releases](https://www.tartley.com/posts/git-annotated-tags), so:
 
@@ -110,9 +110,9 @@ target.
    * Linux: `make test-release`
 
    (This currently only tests the wheel, but
-   [should soon test the sdist too](https://github.com/tartley/colorama/issues/286).)
+   [should soon test the sdist too](https://github.com/tartley/ksilorama/issues/286).)
 
-8. Check the [CI builds](https://github.com/tartley/colorama/actions/)
+8. Check the [CI builds](https://github.com/tartley/ksilorama/actions/)
    are complete and all passing.
 
 9. Upload the distributables to PyPI:
@@ -128,11 +128,11 @@ target.
     problems?
 
 12. Remove the '.rcX' suffix from `__version__` in
-    `colorama/__init__.py`.
+    `ksilorama/__init__.py`.
 
 13. Repeat steps 4 to 9, for the actual (non-candidate) release.
 
-14. Bump the version number in `colorama/__init__.py`, and add a 'dev1'
+14. Bump the version number in `ksilorama/__init__.py`, and add a 'dev1'
     suffix, eg:
 
     `0.4.5dev1`

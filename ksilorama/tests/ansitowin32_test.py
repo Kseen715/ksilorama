@@ -67,8 +67,8 @@ class AnsiToWin32Test(TestCase):
         self.assertEqual(stream.wrapped, mockStdout)
         self.assertEqual(stream.autoreset, auto)
 
-    @patch('colorama.ansitowin32.winterm', None)
-    @patch('colorama.ansitowin32.winapi_test', lambda *_: True)
+    @patch('ksilorama.ansitowin32.winterm', None)
+    @patch('ksilorama.ansitowin32.winapi_test', lambda *_: True)
     def testStripIsTrueOnWindows(self):
         with osname('nt'):
             mockStdout = Mock()
@@ -188,16 +188,16 @@ class AnsiToWin32Test(TestCase):
         stream = StringIO()
         stream.close()
         with \
-            patch("colorama.ansitowin32.os.name", "nt"), \
-            patch("colorama.ansitowin32.winapi_test", lambda: True):
+            patch("ksilorama.ansitowin32.os.name", "nt"), \
+            patch("ksilorama.ansitowin32.winapi_test", lambda: True):
                 converter = AnsiToWin32(stream)
         self.assertTrue(converter.strip)
         self.assertFalse(converter.convert)
 
     def test_wrap_shouldnt_raise_on_missing_closed_attr(self):
         with \
-            patch("colorama.ansitowin32.os.name", "nt"), \
-            patch("colorama.ansitowin32.winapi_test", lambda: True):
+            patch("ksilorama.ansitowin32.os.name", "nt"), \
+            patch("ksilorama.ansitowin32.winapi_test", lambda: True):
                 converter = AnsiToWin32(object())
         self.assertTrue(converter.strip)
         self.assertFalse(converter.convert)
@@ -232,13 +232,13 @@ class AnsiToWin32Test(TestCase):
     def test_osc_codes(self):
         mockStdout = Mock()
         stream = AnsiToWin32(mockStdout, convert=True)
-        with patch('colorama.ansitowin32.winterm') as winterm:
+        with patch('ksilorama.ansitowin32.winterm') as winterm:
             data = [
                 '\033]0\x07',                      # missing arguments
                 '\033]0;foo\x08',                  # wrong OSC command
-                '\033]0;colorama_test_title\x07',  # should work
-                '\033]1;colorama_test_title\x07',  # wrong set command
-                '\033]2;colorama_test_title\x07',  # should work
+                '\033]0;ksilorama_test_title\x07',  # should work
+                '\033]1;ksilorama_test_title\x07',  # wrong set command
+                '\033]2;ksilorama_test_title\x07',  # should work
                 '\033]' + ';' * 64 + '\x08',       # see issue #247
             ]
             for code in data:
@@ -250,19 +250,19 @@ class AnsiToWin32Test(TestCase):
             def p(a, b):
                 stack.enter_context(patch(a, b, create=True))
             # Pretend to be on Windows
-            p("colorama.ansitowin32.os.name", "nt")
-            p("colorama.ansitowin32.winapi_test", lambda: True)
-            p("colorama.win32.winapi_test", lambda: True)
-            p("colorama.winterm.win32.windll", "non-None")
-            p("colorama.winterm.get_osfhandle", lambda _: 1234)
+            p("ksilorama.ansitowin32.os.name", "nt")
+            p("ksilorama.ansitowin32.winapi_test", lambda: True)
+            p("ksilorama.win32.winapi_test", lambda: True)
+            p("ksilorama.winterm.win32.windll", "non-None")
+            p("ksilorama.winterm.get_osfhandle", lambda _: 1234)
 
             # Pretend that our mock stream has native ANSI support
             p(
-                "colorama.winterm.win32.GetConsoleMode",
+                "ksilorama.winterm.win32.GetConsoleMode",
                 lambda _: ENABLE_VIRTUAL_TERMINAL_PROCESSING,
             )
             SetConsoleMode = Mock()
-            p("colorama.winterm.win32.SetConsoleMode", SetConsoleMode)
+            p("ksilorama.winterm.win32.SetConsoleMode", SetConsoleMode)
 
             stdout = Mock()
             stdout.closed = False
@@ -279,9 +279,9 @@ class AnsiToWin32Test(TestCase):
 
             # Now let's pretend we're on an old Windows console, that doesn't have
             # native ANSI support.
-            p("colorama.winterm.win32.GetConsoleMode", lambda _: 0)
+            p("ksilorama.winterm.win32.GetConsoleMode", lambda _: 0)
             SetConsoleMode = Mock()
-            p("colorama.winterm.win32.SetConsoleMode", SetConsoleMode)
+            p("ksilorama.winterm.win32.SetConsoleMode", SetConsoleMode)
 
             stream = AnsiToWin32(stdout)
             SetConsoleMode.assert_called_with(1234, ENABLE_VIRTUAL_TERMINAL_PROCESSING)

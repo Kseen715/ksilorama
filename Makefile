@@ -4,7 +4,7 @@
 # commands. I generally am executing these commands on Ubuntu, or on WindowsXP
 # with Cygwin binaries at the start of the PATH.
 
-NAME=colorama
+NAME=ksilorama
 
 help: ## Display help for documented make targets.
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | \
@@ -13,14 +13,14 @@ help: ## Display help for documented make targets.
 
 # bootstrap environment
 
-virtualenv=~/.virtualenvs/colorama
+virtualenv=~/.virtualenvs/ksilorama
 pip=$(virtualenv)/bin/pip
 syspython=python3
 python=$(virtualenv)/bin/python
 twine=$(virtualenv)/bin/twine
 
 clean: ## Remove build artifacts, .pyc files, virtualenv
-	-rm -rf build dist MANIFEST colorama.egg-info $(virtualenv)
+	-rm -rf build dist MANIFEST ksilorama.egg-info $(virtualenv)
 	-find . -type f -name '*.py[co]' -delete -o -type d -name __pycache__ -delete
 .PHONY: clean
 
@@ -58,5 +58,5 @@ test-release: build ## Test a built release
 .PHONY: test-release
 
 release: ## Upload a built release
-	$(twine) upload --repository=colorama dist/colorama-*
+	$(twine) upload --repository=ksilorama dist/ksilorama-*
 .PHONY: release

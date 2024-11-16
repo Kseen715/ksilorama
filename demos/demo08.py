@@ -1,11 +1,11 @@
 from __future__ import print_function
 import fixpath
-from colorama import colorama_text, Fore
+from ksilorama import ksilorama_text, Fore
 
 
 def main():
     """automatically reset stdout"""
-    with colorama_text():
+    with ksilorama_text():
         print(Fore.GREEN + 'text is green')
         print(Fore.RESET + 'text is back to normal')
 
