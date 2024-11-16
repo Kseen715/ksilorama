@@ -5,7 +5,7 @@ requires = [
 build-backend = "hatchling.build"
 
 [project]
-name = "colorama"
+name = "ksilorama"
 description = "Cross-platform colored terminal text."
 readme = "README.rst"
 license = "BSD-3-Clause"
@@ -48,19 +48,19 @@ dynamic = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/tartley/colorama"
+Homepage = "https://github.com/tartley/ksilorama"
 
 [tool.hatch.version]
-path = "colorama/__init__.py"
+path = "ksilorama/__init__.py"
 
 [tool.hatch.build.targets.sdist]
 include = [
-    "/colorama",
+    "/ksilorama",
     "/demos",
     "/CHANGELOG.rst",
 ]
 
 [tool.hatch.build.targets.wheel]
 include = [
-    "/colorama/*",
+    "/ksilorama/*",
 ]

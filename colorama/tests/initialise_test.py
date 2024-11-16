@@ -39,16 +39,16 @@ class InitTest(TestCase):
         self.assertIs(sys.stdout, orig_stdout, 'stdout should not be wrapped')
         self.assertIs(sys.stderr, orig_stderr, 'stderr should not be wrapped')
 
-    @patch('colorama.initialise.reset_all')
-    @patch('colorama.ansitowin32.winapi_test', lambda *_: True)
-    @patch('colorama.ansitowin32.enable_vt_processing', lambda *_: False)
+    @patch('ksilorama.initialise.reset_all')
+    @patch('ksilorama.ansitowin32.winapi_test', lambda *_: True)
+    @patch('ksilorama.ansitowin32.enable_vt_processing', lambda *_: False)
     def testInitWrapsOnWindows(self, _):
         with osname("nt"):
             init()
             self.assertWrapped()
 
-    @patch('colorama.initialise.reset_all')
-    @patch('colorama.ansitowin32.winapi_test', lambda *_: False)
+    @patch('ksilorama.initialise.reset_all')
+    @patch('ksilorama.ansitowin32.winapi_test', lambda *_: False)
     def testInitDoesntWrapOnEmulatedWindows(self, _):
         with osname("nt"):
             init()
@@ -80,8 +80,8 @@ class InitTest(TestCase):
     def testInitWrapOffIncompatibleWithAutoresetOn(self):
         self.assertRaises(ValueError, lambda: init(autoreset=True, wrap=False))
 
-    @patch('colorama.win32.SetConsoleTextAttribute')
-    @patch('colorama.initialise.AnsiToWin32')
+    @patch('ksilorama.win32.SetConsoleTextAttribute')
+    @patch('ksilorama.initialise.AnsiToWin32')
     def testAutoResetPassedOn(self, mockATW32, _):
         with osname("nt"):
             init(autoreset=True)
@@ -89,7 +89,7 @@ class InitTest(TestCase):
             self.assertEqual(mockATW32.call_args_list[1][1]['autoreset'], True)
             self.assertEqual(mockATW32.call_args_list[0][1]['autoreset'], True)
 
-    @patch('colorama.initialise.AnsiToWin32')
+    @patch('ksilorama.initialise.AnsiToWin32')
     def testAutoResetChangeable(self, mockATW32):
         with osname("nt"):
             init()
@@ -107,7 +107,7 @@ class InitTest(TestCase):
                 mockATW32.call_args_list[5][1]['autoreset'], False)
 
 
-    @patch('colorama.initialise.atexit.register')
+    @patch('ksilorama.initialise.atexit.register')
     def testAtexitRegisteredOnlyOnce(self, mockRegister):
         init()
         self.assertTrue(mockRegister.called)
@@ -125,7 +125,7 @@ class JustFixWindowsConsoleTest(TestCase):
     def tearDown(self):
         self._reset()
 
-    @patch("colorama.ansitowin32.winapi_test", lambda: True)
+    @patch("ksilorama.ansitowin32.winapi_test", lambda: True)
     def testJustFixWindowsConsole(self):
         if sys.platform != "win32":
             # just_fix_windows_console should be a no-op
@@ -150,7 +150,7 @@ class JustFixWindowsConsoleTest(TestCase):
 
             for native_ansi in [False, True]:
                 with patch(
-                    'colorama.ansitowin32.enable_vt_processing',
+                    'ksilorama.ansitowin32.enable_vt_processing',
                     lambda *_: native_ansi
                 ):
                     self._reset()

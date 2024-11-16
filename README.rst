@@ -1,30 +1,30 @@
-.. image:: https://img.shields.io/pypi/v/colorama.svg
-    :target: https://pypi.org/project/colorama/
+.. image:: https://img.shields.io/pypi/v/ksilorama.svg
+    :target: https://pypi.org/project/ksilorama/
     :alt: Latest Version
 
-.. image:: https://img.shields.io/pypi/pyversions/colorama.svg
-    :target: https://pypi.org/project/colorama/
+.. image:: https://img.shields.io/pypi/pyversions/ksilorama.svg
+    :target: https://pypi.org/project/ksilorama/
     :alt: Supported Python versions
 
-.. image:: https://github.com/tartley/colorama/actions/workflows/test.yml/badge.svg
-    :target: https://github.com/tartley/colorama/actions/workflows/test.yml
+.. image:: https://github.com/tartley/ksilorama/actions/workflows/test.yml/badge.svg
+    :target: https://github.com/tartley/ksilorama/actions/workflows/test.yml
     :alt: Build Status
 
-Colorama
+Ksilorama
 ========
 
 Makes ANSI escape character sequences (for producing colored terminal text and
 cursor positioning) work under MS Windows.
 
 .. |donate| image:: https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif
-  :target: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=2MZ9D2GMLYCUJ&item_name=Colorama&currency_code=USD
+  :target: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=2MZ9D2GMLYCUJ&item_name=Ksilorama&currency_code=USD
   :alt: Donate with Paypal
 
-`PyPI for releases <https://pypi.org/project/colorama/>`_ |
-`Github for source <https://github.com/tartley/colorama>`_ |
-`Colorama for enterprise on Tidelift <https://github.com/tartley/colorama/blob/master/ENTERPRISE.md>`_
+`PyPI for releases <https://pypi.org/project/ksilorama/>`_ |
+`Github for source <https://github.com/tartley/ksilorama>`_ |
+`Ksilorama for enterprise on Tidelift <https://github.com/tartley/ksilorama/blob/master/ENTERPRISE.md>`_
 
-If you find Colorama useful, please |donate| to the authors. Thank you!
+If you find Ksilorama useful, please |donate| to the authors. Thank you!
 
 Installation
 ------------
@@ -35,47 +35,47 @@ No requirements other than the standard library.
 
 .. code-block:: bash
 
-    pip install colorama
+    pip install ksilorama
     # or
-    conda install -c anaconda colorama
+    conda install -c anaconda ksilorama
 
 Description
 -----------
 
 ANSI escape character sequences have long been used to produce colored terminal
-text and cursor positioning on Unix and Macs. Colorama makes this work on
+text and cursor positioning on Unix and Macs. Ksilorama makes this work on
 Windows, too, by wrapping ``stdout``, stripping ANSI sequences it finds (which
 would appear as gobbledygook in the output), and converting them into the
 appropriate win32 calls to modify the state of the terminal. On other platforms,
-Colorama does nothing.
+Ksilorama does nothing.
 
 This has the upshot of providing a simple cross-platform API for printing
 colored terminal text from Python, and has the happy side-effect that existing
 applications or libraries which use ANSI sequences to produce colored output on
 Linux or Macs can now also work on Windows, simply by calling
-``colorama.just_fix_windows_console()`` (since v0.4.6) or ``colorama.init()``
+``ksilorama.just_fix_windows_console()`` (since v0.4.6) or ``ksilorama.init()``
 (all versions, but may have other side-effects – see below).
 
 An alternative approach is to install ``ansi.sys`` on Windows machines, which
-provides the same behaviour for all applications running in terminals. Colorama
+provides the same behaviour for all applications running in terminals. Ksilorama
 is intended for situations where that isn't easy (e.g., maybe your app doesn't
 have an installer.)
 
 Demo scripts in the source code repository print some colored text using
 ANSI sequences. Compare their output under Gnome-terminal's built in ANSI
-handling, versus on Windows Command-Prompt using Colorama:
+handling, versus on Windows Command-Prompt using Ksilorama:
 
-.. image:: https://github.com/tartley/colorama/raw/master/screenshots/ubuntu-demo.png
+.. image:: https://github.com/tartley/ksilorama/raw/master/screenshots/ubuntu-demo.png
     :width: 661
     :height: 357
     :alt: ANSI sequences on Ubuntu under gnome-terminal.
 
-.. image:: https://github.com/tartley/colorama/raw/master/screenshots/windows-demo.png
+.. image:: https://github.com/tartley/ksilorama/raw/master/screenshots/windows-demo.png
     :width: 668
     :height: 325
-    :alt: Same ANSI sequences on Windows, using Colorama.
+    :alt: Same ANSI sequences on Windows, using Ksilorama.
 
-These screenshots show that, on Windows, Colorama does not support ANSI 'dim
+These screenshots show that, on Windows, Ksilorama does not support ANSI 'dim
 text'; it looks the same as 'normal text'.
 
 Usage
@@ -84,12 +84,12 @@ Usage
 Initialisation
 ..............
 
-If the only thing you want from Colorama is to get ANSI escapes to work on
+If the only thing you want from Ksilorama is to get ANSI escapes to work on
 Windows, then run:
 
 .. code-block:: python
 
-    from colorama import just_fix_windows_console
+    from ksilorama import just_fix_windows_console
     just_fix_windows_console()
 
 If you're on a recent version of Windows 10 or better, and your stdout/stderr
@@ -114,7 +114,7 @@ potential footguns):
 
 .. code-block:: python
 
-    from colorama import init
+    from ksilorama import init
     init()
 
 This does the same thing as ``just_fix_windows_console``, except for the
@@ -123,23 +123,23 @@ following differences:
 - It's not safe to call ``init`` multiple times; you can end up with multiple
   layers of wrapping and broken ANSI support.
 
-- Colorama will apply a heuristic to guess whether stdout/stderr support ANSI,
+- Ksilorama will apply a heuristic to guess whether stdout/stderr support ANSI,
   and if it thinks they don't, then it will wrap ``sys.stdout`` and
   ``sys.stderr`` in a magic file object that strips out ANSI escape sequences
   before printing them. This happens on all platforms, and can be convenient if
   you want to write your code to emit ANSI escape sequences unconditionally, and
-  let Colorama decide whether they should actually be output. But note that
-  Colorama's heuristic is not particularly clever.
+  let Ksilorama decide whether they should actually be output. But note that
+  Ksilorama's heuristic is not particularly clever.
 
 - ``init`` also accepts explicit keyword args to enable/disable various
   functionality – see below.
 
-To stop using Colorama before your program exits, simply call ``deinit()``.
+To stop using Ksilorama before your program exits, simply call ``deinit()``.
 This will restore ``stdout`` and ``stderr`` to their original values, so that
-Colorama is disabled. To resume using Colorama again, call ``reinit()``; it is
+Ksilorama is disabled. To resume using Ksilorama again, call ``reinit()``; it is
 cheaper than calling ``init()`` again (but does the same thing).
 
-Most users should depend on ``colorama >= 0.4.6``, and use
+Most users should depend on ``ksilorama >= 0.4.6``, and use
 ``just_fix_windows_console``. The old ``init`` interface will be supported
 indefinitely for backwards compatibility, but we don't plan to fix any issues
 with it, also for backwards compatibility.
@@ -147,13 +147,13 @@ with it, also for backwards compatibility.
 Colored Output
 ..............
 
-Cross-platform printing of colored text can then be done using Colorama's
+Cross-platform printing of colored text can then be done using Ksilorama's
 constant shorthand for ANSI escape sequences. These are deliberately
 rudimentary, see below.
 
 .. code-block:: python
 
-    from colorama import Fore, Back, Style
+    from ksilorama import Fore, Back, Style
     print(Fore.RED + 'some red text')
     print(Back.GREEN + 'and with a green background')
     print(Style.DIM + 'and in dim text')
@@ -167,26 +167,26 @@ rudimentary, see below.
     print('\033[31m' + 'some red text')
     print('\033[39m') # and reset to default color
 
-...or, Colorama can be used in conjunction with existing ANSI libraries
+...or, Ksilorama can be used in conjunction with existing ANSI libraries
 such as the venerable `Termcolor <https://pypi.org/project/termcolor/>`_
 the fabulous `Blessings <https://pypi.org/project/blessings/>`_,
 or the incredible `_Rich <https://pypi.org/project/rich/>`_.
 
-If you wish Colorama's Fore, Back and Style constants were more capable,
+If you wish Ksilorama's Fore, Back and Style constants were more capable,
 then consider using one of the above highly capable libraries to generate
-colors, etc, and use Colorama just for its primary purpose: to convert
+colors, etc, and use Ksilorama just for its primary purpose: to convert
 those ANSI sequences to also work on Windows:
 
-SIMILARLY, do not send PRs adding the generation of new ANSI types to Colorama.
+SIMILARLY, do not send PRs adding the generation of new ANSI types to Ksilorama.
 We are only interested in converting ANSI codes to win32 API calls, not
 shortcuts like the above to generate ANSI characters.
 
 .. code-block:: python
 
-    from colorama import just_fix_windows_console
+    from ksilorama import just_fix_windows_console
     from termcolor import colored
 
-    # use Colorama to make Termcolor work on Windows too
+    # use Ksilorama to make Termcolor work on Windows too
     just_fix_windows_console()
 
     # then use Termcolor for all colored text output
@@ -198,7 +198,7 @@ Available formatting constants are::
     Back: BLACK, RED, GREEN, YELLOW, BLUE, MAGENTA, CYAN, WHITE, RESET.
     Style: DIM, NORMAL, BRIGHT, RESET_ALL
 
-``Style.RESET_ALL`` resets foreground, background, and brightness. Colorama will
+``Style.RESET_ALL`` resets foreground, background, and brightness. Ksilorama will
 perform this reset automatically on program exit.
 
 These are fairly well supported, but not part of the standard::
@@ -224,7 +224,7 @@ init(autoreset=False):
 
     .. code-block:: python
 
-        from colorama import init
+        from ksilorama import init
         init(autoreset=True)
         print(Fore.RED + 'some red text')
         print('automatically back to default color again')
@@ -240,7 +240,7 @@ init(convert=None):
     and output is to a tty (terminal).
 
 init(wrap=True):
-    On Windows, Colorama works by replacing ``sys.stdout`` and ``sys.stderr``
+    On Windows, Ksilorama works by replacing ``sys.stdout`` and ``sys.stderr``
     with proxy objects, which override the ``.write()`` method to do their work.
     If this wrapping causes you problems, then this can be disabled by passing
     ``init(wrap=False)``. The default behaviour is to wrap if ``autoreset`` or
@@ -248,12 +248,12 @@ init(wrap=True):
 
     When wrapping is disabled, colored printing on non-Windows platforms will
     continue to work as normal. To do cross-platform colored output, you can
-    use Colorama's ``AnsiToWin32`` proxy directly:
+    use Ksilorama's ``AnsiToWin32`` proxy directly:
 
     .. code-block:: python
 
         import sys
-        from colorama import init, AnsiToWin32
+        from ksilorama import init, AnsiToWin32
         init(wrap=False)
         stream = AnsiToWin32(sys.stderr).stream
 
@@ -275,7 +275,7 @@ more params are passed to a ``<command>``. If no params are passed, it is
 generally synonymous with passing a single zero. No spaces exist in the
 sequence; they have been inserted here simply to read more easily.
 
-The only ANSI sequences that Colorama converts into win32 calls are::
+The only ANSI sequences that Ksilorama converts into win32 calls are::
 
     ESC [ 0 m       # reset all (colors and brightness)
     ESC [ 1 m       # bright
@@ -340,11 +340,11 @@ I've personally only tested it on Windows XP (CMD, Console2), Ubuntu
 Some valid ANSI sequences aren't recognised.
 
 If you're hacking on the code, see `README-hacking.md`_. ESPECIALLY, see the
-explanation there of why we do not want PRs that allow Colorama to generate new
+explanation there of why we do not want PRs that allow Ksilorama to generate new
 types of ANSI codes.
 
 See outstanding issues and wish-list:
-https://github.com/tartley/colorama/issues
+https://github.com/tartley/ksilorama/issues
 
 If anything doesn't work for you, or doesn't do what you expected or hoped for,
 I'd love to hear about it on that issues list, would be delighted by patches,
@@ -364,20 +364,20 @@ Professional support
 
 .. |tideliftlogo| image:: https://cdn2.hubspot.net/hubfs/4008838/website/logos/logos_for_download/Tidelift_primary-shorthand-logo.png
    :alt: Tidelift
-   :target: https://tidelift.com/subscription/pkg/pypi-colorama?utm_source=pypi-colorama&utm_medium=referral&utm_campaign=readme
+   :target: https://tidelift.com/subscription/pkg/pypi-ksilorama?utm_source=pypi-ksilorama&utm_medium=referral&utm_campaign=readme
 
 .. list-table::
    :widths: 10 100
 
    * - |tideliftlogo|
-     - Professional support for colorama is available as part of the
+     - Professional support for ksilorama is available as part of the
        `Tidelift Subscription`_.
        Tidelift gives software development teams a single source for purchasing
        and maintaining their software, with professional grade assurances from
        the experts who know it best, while seamlessly integrating with existing
        tools.
 
-.. _Tidelift Subscription: https://tidelift.com/subscription/pkg/pypi-colorama?utm_source=pypi-colorama&utm_medium=referral&utm_campaign=readme
+.. _Tidelift Subscription: https://tidelift.com/subscription/pkg/pypi-ksilorama?utm_source=pypi-ksilorama&utm_medium=referral&utm_campaign=readme
 
 Thanks
 ------

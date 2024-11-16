@@ -12,7 +12,7 @@ from ..winterm import WinColor, WinStyle, WinTerm
 
 class WinTermTest(TestCase):
 
-    @patch('colorama.winterm.win32')
+    @patch('ksilorama.winterm.win32')
     def testInit(self, mockWin32):
         mockAttr = Mock()
         mockAttr.wAttributes = 7 + 6 * 16 + 8
@@ -44,7 +44,7 @@ class WinTermTest(TestCase):
             term.get_attrs(),
             WinColor.YELLOW + WinColor.MAGENTA * 16 + WinStyle.BRIGHT)
 
-    @patch('colorama.winterm.win32')
+    @patch('ksilorama.winterm.win32')
     def testResetAll(self, mockWin32):
         mockAttr = Mock()
         mockAttr.wAttributes = 1 + 2 * 16 + 8
@@ -96,7 +96,7 @@ class WinTermTest(TestCase):
         self.assertEqual(term._style, 22)
         self.assertEqual(term.set_console.called, True)
 
-    @patch('colorama.winterm.win32')
+    @patch('ksilorama.winterm.win32')
     def testSetConsole(self, mockWin32):
         mockAttr = Mock()
         mockAttr.wAttributes = 0
@@ -111,7 +111,7 @@ class WinTermTest(TestCase):
             ((mockWin32.STDOUT, term.get_attrs()), {})
         )
 
-    @patch('colorama.winterm.win32')
+    @patch('ksilorama.winterm.win32')
     def testSetConsoleOnStderr(self, mockWin32):
         mockAttr = Mock()
         mockAttr.wAttributes = 0

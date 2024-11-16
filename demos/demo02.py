@@ -5,7 +5,7 @@
 
 from __future__ import print_function
 import fixpath
-from colorama import just_fix_windows_console, Fore, Back, Style
+from ksilorama import just_fix_windows_console, Fore, Back, Style
 
 just_fix_windows_console()
 

@@ -1,26 +1,26 @@
 0.4.6 Current release
-  * https://github.com/tartley/colorama/pull/139 Add alternative to 'init()',
+  * https://github.com/tartley/ksilorama/pull/139 Add alternative to 'init()',
     called 'just_fix_windows_console'. This fixes many longstanding problems
     with 'init', such as working incorrectly on modern Windows terminals, and
     wonkiness when init gets called multiple times. The intention is that it
     just makes all Windows terminals treat ANSI the same way as other terminals
     do. Many thanks the njsmith for fixing our messes. 
-  * https://github.com/tartley/colorama/pull/352 Support Windows 10's ANSI/VT
-    console. This didn't exist when Colorama was created, and avoiding us
+  * https://github.com/tartley/ksilorama/pull/352 Support Windows 10's ANSI/VT
+    console. This didn't exist when Ksilorama was created, and avoiding us
     causing havok there is long overdue. Thanks to segeviner for the initial
     approach, and to njsmith for getting it merged.
-  * https://github.com/tartley/colorama/pull/338 Internal overhaul of package
+  * https://github.com/tartley/ksilorama/pull/338 Internal overhaul of package
     metadata declaration, which abolishes our use of the now heavily
     discouraged setuptools (and hence setup.py, setup.cfg and MANIFEST.in), in
     favor of hatchling (and hence pyproject.toml), generously contributed by
     ofek (author of hatchling). This includes dropping support Python3.5 and
     3.6, which are EOL, and were already dropped from setuptools, so this
     should not affect our users.
-  * https://github.com/tartley/colorama/pull/353 Attention to detail award to
+  * https://github.com/tartley/ksilorama/pull/353 Attention to detail award to
     LqdBcnAtWork for a spelling fix in demo06
 0.4.5
   * Catch a racy ValueError that could occur on exit.
-  * Create README-hacking.md, for Colorama contributors.
+  * Create README-hacking.md, for Ksilorama contributors.
   * Tweak some README unicode characters that don't render correctly on PyPI.
   * Fix some tests that were failing on some operating systems.
   * Add support for Python 3.9.
@@ -82,7 +82,7 @@
   * Fix issue #57 - Fore.RESET did not reset style of LIGHT_EX colors. Fixed by
     Andy Neff
   * Fix issue #51 - add context manager syntax. Thanks to Matt Olsen.
-  * Fix issue #48 - colorama didn't work on Windows when environment variable
+  * Fix issue #48 - ksilorama didn't work on Windows when environment variable
     'TERM' was set.
   * Fix issue #54 - fix pylint errors in client code.
   * Changes to readme and other improvements by Marc Abramowitz and Zearin
@@ -98,8 +98,8 @@
   * Implement \033[0J and \033[1J (clear screen options)
   * Fix default ANSI parameters
   * Fix position after \033[2J (clear screen)
-  * Add command shortcuts: colorama.Cursor, colorama.ansi.set_title,
-    colorama.ansi.clear_line, colorama.ansi.clear_screen
+  * Add command shortcuts: ksilorama.Cursor, ksilorama.ansi.set_title,
+    ksilorama.ansi.clear_line, ksilorama.ansi.clear_screen
   * Fix issue #22 - Importing fails for python3 on Windows
   * Thanks to John Szakmeister for adding support for light colors
   * Thanks to Charles Merriam for adding documentation to demos
@@ -119,9 +119,9 @@
 0.3.1
   * Fixed crash on exit with closed stdout, with thanks to Marc Abramowitz.
   * Now uses setuptools if available, and falls back to distutils if not.
-  * setup.py no longer imports anything from colorama source.
+  * setup.py no longer imports anything from ksilorama source.
 0.3.0
-  * Move repository to Git, https://github.com/tartley/colorama. (My Mercurial
+  * Move repository to Git, https://github.com/tartley/ksilorama. (My Mercurial
     repo seemed to be corrupted, I couldn't commit nor view patches of old
     commits, even on fresh checkouts.)
   * Fix always-crash on non-Windows platforms, reported by Matt McCormick.
@@ -157,7 +157,7 @@
     send RESET_ALL to non-tty.
   * Demos split into separate files and moved into their own directory.
   * Tweak sys.path in demos so they run against local source, not installed
-    version of Colorama.
+    version of Ksilorama.
 0.1.18
   * Fix README (no such attr as Fore.DEFAULT, etc), kindly reported by nodakai.
 0.1.17
@@ -200,7 +200,7 @@
   * Fix stacking of repeated atexit calls - now just called once.
   * Fix ghastly import problems while running tests.
   * 'demo.py' (hg checkout only) now demonstrates autoreset and reset atexit.
-  * Provide colorama.VERSION, used by setup.py.
+  * Provide ksilorama.VERSION, used by setup.py.
   * Tests defanged so they no longer actually change terminal color when run.
 0.1.5
   * Now works on Ubuntu.

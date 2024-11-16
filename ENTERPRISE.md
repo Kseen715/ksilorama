@@ -1,14 +1,14 @@
-# Colorama for enterprise.
+# Ksilorama for enterprise.
 
 *Available as part of the Tidelift Subscription.*
 
-Tidelift is working with the maintainers of Colorama and thousands of other
+Tidelift is working with the maintainers of Ksilorama and thousands of other
 open source projects to deliver commercial support and maintenance for the open
 source dependencies you use to build your applications. Save time, reduce risk,
 and improve code health, while paying the maintainers of the exact dependencies
 you use.
 
-[\[Learn More\]](https://tidelift.com/subscription/pkg/pypi-colorama?utm_source=pypi-colorama&utm_medium=referral&utm_campaign=enterprise) [\[Request a demo\]](https://tidelift.com/subscription/request-a-demo?utm_source=pypi-colorama&utm_medium=referral&utm_campaign=enterprise)
+[\[Learn More\]](https://tidelift.com/subscription/pkg/pypi-ksilorama?utm_source=pypi-ksilorama&utm_medium=referral&utm_campaign=enterprise) [\[Request a demo\]](https://tidelift.com/subscription/request-a-demo?utm_source=pypi-ksilorama&utm_medium=referral&utm_campaign=enterprise)
 
 ### Enterprise-ready open source software—managed for you
 
@@ -47,5 +47,5 @@ platform (and other deployment targets, too).
 
 The end result? All of the capabilities you expect from commercial-grade software, for the full breadth of open source you use. That means less time grappling with esoteric open source trivia, and more time building your own applications—and your business.
 
-[\[Learn More\]](https://tidelift.com/subscription/pkg/pypi-colorama?utm_source=pypi-colorama&utm_medium=referral&utm_campaign=enterprise) [\[Request a demo\]](https://tidelift.com/subscription/request-a-demo?utm_source=pypi-colorama&utm_medium=referral&utm_campaign=enterprise)
+[\[Learn More\]](https://tidelift.com/subscription/pkg/pypi-ksilorama?utm_source=pypi-ksilorama&utm_medium=referral&utm_campaign=enterprise) [\[Request a demo\]](https://tidelift.com/subscription/request-a-demo?utm_source=pypi-ksilorama&utm_medium=referral&utm_campaign=enterprise)
 

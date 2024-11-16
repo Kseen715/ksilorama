@@ -1,9 +1,9 @@
 # https://www.youtube.com/watch?v=F5a8RLY2N8M&list=PL1_riyn9sOjcKIAYzo7f8drxD-Yg9La-D&index=61
-# Generic colorama demo using command line arguments
+# Generic ksilorama demo using command line arguments
 # By George Ogden
-from colorama import Fore, Back, Style, init
+from ksilorama import Fore, Back, Style, init
 import argparse
-parser = argparse.ArgumentParser("colorama demo")
+parser = argparse.ArgumentParser("ksilorama demo")
 
 def format(module):
     return list(map(lambda x: x.lower(),module.__dict__.keys()))
