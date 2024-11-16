@@ -8,6 +8,7 @@
 /sandbox/
 /tags
 virtualenv
+venv/
 
 # PyCharm
 .idea
