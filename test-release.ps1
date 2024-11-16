@@ -8,6 +8,9 @@ if(!$?) {
     write-host "  > Expect a 400 if package was already uploaded"
 }
 
+# Sleep for a bit to let the test PyPI update.
+Start-Sleep -Seconds 5
+
 # cd elsewhere so we cannot import from local source.
 mkdir -force sandbox | out-null
 cd sandbox
@@ -15,7 +18,7 @@ cd sandbox
 # Create a temporary disposable virtualenv.
 & $syspython -m venv --clear venv
 
-# TODO: What is the windows/powershell equivalent of this:
+# T O D O: What is the windows/powershell equivalent of this:
 #    version=$(grep __version__ ksilorama/__init__.py | cut -d' ' -f3 | tr -d "'")
 # This:
 $version = (Select-String -Path "../ksilorama/__init__.py" -Pattern "__version__" | ForEach-Object { $_.Line.Split(' ')[2].Trim("'") })
