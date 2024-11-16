@@ -25,7 +25,7 @@ Warning
 
 Ksilorama is a fork of `colorama <https://pypi.org/project/colorama/>`_. 
 This fork was created because the original project is no longer maintained.
-The goal of ksilorama is to fullfill ANSI escape character sequences.
+The goal of ksilorama is to fulfill ANSI escape character sequences.
 
 Changes
 -------
