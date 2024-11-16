@@ -30,7 +30,7 @@ def hsl_to_rgb(h, s, l):
     h = min(max(h, 0), 1)
     s = min(max(s, 0), 1)
     l = min(max(l, 0), 1)
-    
+
     r, g, b = 0, 0, 0
 
     if s == 0:
@@ -123,25 +123,25 @@ class AnsiFore(AnsiCodes):
     LIGHTWHITE_EX   = 97
 
     def C256(self, value):
-        return f'\033[38;5;{value}m'
+        return '\033[38;5;' + value + 'm'
 
     def RGB(self, r, g, b):
-        return f'\033[38;2;{r};{g};{b}m'
+        return '\033[38;2;' + r + ';' + g + ';' + b + 'm'
 
     def HSL(self, h, s, l):
         # Convert HSL (float) to RGB and then return the ANSI code
         r, g, b = hsl_to_rgb(h, s, l)
-        return f'\033[38;2;{r};{g};{b}m'
+        return '\033[38;2;' + r + ';' + g + ';' + b + 'm'
 
     def CMYK(self, c, m, y, k):
         # Convert CMYK (0-100) to RGB and then return the ANSI code
         r, g, b = cmyk_to_rgb(c, m, y, k)
-        return f'\033[38;2;{r};{g};{b}m'
+        return '\033[38;2;' + r + ';' + g + ';' + b + 'm'
 
     def HEX(self, hex_value):
         # Convert HEX to RGB and then return the ANSI code
         r, g, b = hex_to_rgb(hex_value)
-        return f'\033[38;2;{r};{g};{b}m'
+        return '\033[38;2;' + r + ';' + g + ';' + b + 'm'
 
 
 class AnsiBack(AnsiCodes):
@@ -166,25 +166,25 @@ class AnsiBack(AnsiCodes):
     LIGHTWHITE_EX   = 107
 
     def C256(self, value):
-        return f'\033[48;5;{value}m'
+        return '\033[48;5;' + value + 'm'
 
     def RGB(self, r, g, b):
-        return f'\033[48;2;{r};{g};{b}m'
+        return '\033[48;2;' + r + ';' + g + ';' + b + 'm'
 
     def HSL(self, h, s, l):
         # Convert HSL (float) to RGB and then return the ANSI code
         r, g, b = hsl_to_rgb(h, s, l)
-        return f'\033[48;2;{r};{g};{b}m'
+        return '\033[48;2;' + r + ';' + g + ';' + b + 'm'
 
     def CMYK(self, c, m, y, k):
         # Convert CMYK to RGB and then return the ANSI code
         r, g, b = cmyk_to_rgb(c, m, y, k)
-        return f'\033[48;2;{r};{g};{b}m'
+        return '\033[48;2;' + r + ';' + g + ';' + b + 'm'
 
     def HEX(self, hex_value):
         # Convert HEX to RGB and then return the ANSI code
         r, g, b = hex_to_rgb(hex_value)
-        return f'\033[48;2;{r};{g};{b}m'
+        return '\033[48;2;' + r + ';' + g + ';' + b + 'm'
 
 
 class AnsiStyle(AnsiCodes):
