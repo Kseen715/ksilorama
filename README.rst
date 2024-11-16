@@ -6,30 +6,24 @@
     :target: https://pypi.org/project/ksilorama/
     :alt: Supported Python versions
 
-.. image:: https://github.com/tartley/ksilorama/actions/workflows/test.yml/badge.svg
-    :target: https://github.com/tartley/ksilorama/actions/workflows/test.yml
+.. image:: https://github.com/Kseen715/ksilorama/actions/workflows/test.yml/badge.svg
+    :target: https://github.com/Kseen715/ksilorama/actions/workflows/test.yml
     :alt: Build Status
 
 Ksilorama
-========
+=========
 
 Makes ANSI escape character sequences (for producing colored terminal text and
 cursor positioning) work under MS Windows.
 
-.. |donate| image:: https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif
-  :target: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=2MZ9D2GMLYCUJ&item_name=Ksilorama&currency_code=USD
-  :alt: Donate with Paypal
-
 `PyPI for releases <https://pypi.org/project/ksilorama/>`_ |
-`Github for source <https://github.com/tartley/ksilorama>`_ |
-`Ksilorama for enterprise on Tidelift <https://github.com/tartley/ksilorama/blob/master/ENTERPRISE.md>`_
-
-If you find Ksilorama useful, please |donate| to the authors. Thank you!
+`Github for source <https://github.com/Kseen715/ksilorama>`_ |
+`Ksilorama for enterprise on Tidelift <https://github.com/Kseen715/ksilorama/blob/master/ENTERPRISE.md>`_
 
 Installation
 ------------
 
-Tested on CPython 2.7, 3.7, 3.8, 3.9, 3.10, 3.11 and 3.12 and PyPy 2.7 and 3.8.
+Tested on CPython 2.7, 3.7 - 3.13 and PyPy 2.7 and 3.8.
 
 No requirements other than the standard library.
 
@@ -65,12 +59,12 @@ Demo scripts in the source code repository print some colored text using
 ANSI sequences. Compare their output under Gnome-terminal's built in ANSI
 handling, versus on Windows Command-Prompt using Ksilorama:
 
-.. image:: https://github.com/tartley/ksilorama/raw/master/screenshots/ubuntu-demo.png
+.. image:: https://github.com/Kseen715/ksilorama/raw/master/screenshots/ubuntu-demo.png
     :width: 661
     :height: 357
     :alt: ANSI sequences on Ubuntu under gnome-terminal.
 
-.. image:: https://github.com/tartley/ksilorama/raw/master/screenshots/windows-demo.png
+.. image:: https://github.com/Kseen715/ksilorama/raw/master/screenshots/windows-demo.png
     :width: 668
     :height: 325
     :alt: Same ANSI sequences on Windows, using Ksilorama.
