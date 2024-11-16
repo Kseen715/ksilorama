@@ -3,5 +3,5 @@ from .initialise import init, deinit, reinit, ksilorama_text, just_fix_windows_c
 from .ansi import Fore, Back, Style, Cursor
 from .ansitowin32 import AnsiToWin32
 
-__version__ = '0.4.8.dev1'
+__version__ = '0.4.11.dev1'
 

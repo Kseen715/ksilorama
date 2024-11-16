@@ -33,6 +33,33 @@ Changes
 Here are the differences between Ksilorama and colorama:
 
 - Added support for Python 3.13
+- In AnsiStyle added:
+    - ITALIC       
+    - UNDERLINE    
+    - BLINK        
+    - INVERTED     
+    - HIDDEN       
+    - STRIKETHROUGH
+    - RESET_BOLD         
+    - RESET_DIM          
+    - RESET_ITALIC       
+    - RESET_UNDERLINE    
+    - RESET_BLINK        
+    - RESET_INVERTED     
+    - RESET_HIDDEN       
+    - RESET_STRIKETHROUGH
+- In AnsiFore added:
+    - 256 colors (C256)
+    - RGB colors (RGB)
+    - HSL colors (HSL)
+    - CMYL colors (CMYL)
+    - HEX colors (HEX)
+- In AnsiBack added:
+    - 256 colors (C256)
+    - RGB colors (RGB)
+    - HSL colors (HSL)
+    - CMYL colors (CMYL)
+    - HEX colors (HEX)
 
 Installation
 ------------

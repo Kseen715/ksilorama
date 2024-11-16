@@ -8,9 +8,6 @@ if(!$?) {
     write-host "  > Expect a 400 if package was already uploaded"
 }
 
-# Sleep for a bit to let the test PyPI update.
-Start-Sleep -Seconds 5
-
 # cd elsewhere so we cannot import from local source.
 mkdir -force sandbox | out-null
 cd sandbox
@@ -31,6 +28,11 @@ venv\Scripts\python.exe -c @"
 import ksilorama;
 ksilorama.init();
 print(ksilorama.Fore.GREEN + 'OK Ksilorama ' + ksilorama.__version__ + ' from test pypi install.')
+print(ksilorama.Fore.RGB(49, 153, 153) + 'OK Ksilorama RGB ' + ksilorama.__version__ + ' from test pypi install.')
+print(ksilorama.Fore.C256(57) + 'OK Ksilorama C256 ' + ksilorama.__version__ + ' from test pypi install.')
+print(ksilorama.Fore.HSL(53/360, 30/100, 50/100) + 'OK Ksilorama HSL ' + ksilorama.__version__ + ' from test pypi install.')
+print(ksilorama.Fore.CMYK(16, 51, 38, 0) + 'OK Ksilorama CMYK ' + ksilorama.__version__ + ' from test pypi install.')
+print(ksilorama.Fore.HEX('#a56543') + 'OK Ksilorama HEX ' + ksilorama.__version__ + ' from test pypi install.')
 "@
 
 cd ..

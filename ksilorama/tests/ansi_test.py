@@ -43,6 +43,21 @@ class AnsiTest(TestCase):
         self.assertEqual(Fore.LIGHTCYAN_EX, '\033[96m')
         self.assertEqual(Fore.LIGHTWHITE_EX, '\033[97m')
 
+        self.assertEqual(Fore.C256(0), '\033[38;5;0m')
+        self.assertEqual(Fore.C256(255), '\033[38;5;255m')
+
+        self.assertEqual(Fore.RGB(0, 0, 0), '\033[38;2;0;0;0m')
+        self.assertEqual(Fore.RGB(255, 255, 255), '\033[38;2;255;255;255m')
+
+        self.assertEqual(Fore.HSL(0, 0, 0), '\033[38;2;0;0;0m')
+        self.assertEqual(Fore.HSL(0, 0, 1), '\033[38;2;255;255;255m')
+
+        self.assertEqual(Fore.CMYK(0, 0, 0, 100), '\033[38;2;0;0;0m')
+        self.assertEqual(Fore.CMYK(0, 0, 0, 0), '\033[38;2;255;255;255m')
+
+        self.assertEqual(Fore.HEX('#000000'), '\033[38;2;0;0;0m')
+        self.assertEqual(Fore.HEX('#FFFFFF'), '\033[38;2;255;255;255m')
+
 
     def testBackAttributes(self):
         self.assertEqual(Back.BLACK, '\033[40m')
@@ -65,12 +80,42 @@ class AnsiTest(TestCase):
         self.assertEqual(Back.LIGHTCYAN_EX, '\033[106m')
         self.assertEqual(Back.LIGHTWHITE_EX, '\033[107m')
 
+        self.assertEqual(Back.C256(0), '\033[48;5;0m')
+        self.assertEqual(Back.C256(255), '\033[48;5;255m')
+
+        self.assertEqual(Back.RGB(0, 0, 0), '\033[48;2;0;0;0m')
+        self.assertEqual(Back.RGB(255, 255, 255), '\033[48;2;255;255;255m')
+
+        self.assertEqual(Back.HSL(0, 0, 0), '\033[48;2;0;0;0m')
+        self.assertEqual(Back.HSL(0, 0, 1), '\033[48;2;255;255;255m')
+
+        self.assertEqual(Back.CMYK(0, 0, 0, 100), '\033[48;2;0;0;0m')
+        self.assertEqual(Back.CMYK(0, 0, 0, 0), '\033[48;2;255;255;255m')
+
+        self.assertEqual(Back.HEX('#000000'), '\033[48;2;0;0;0m')
+        self.assertEqual(Back.HEX('#FFFFFF'), '\033[48;2;255;255;255m')
+
 
     def testStyleAttributes(self):
-        self.assertEqual(Style.DIM, '\033[2m')
-        self.assertEqual(Style.NORMAL, '\033[22m')
-        self.assertEqual(Style.BRIGHT, '\033[1m')
-
+        self.assertEqual(Style.RESET_ALL            , '\033[0m')
+        self.assertEqual(Style.BRIGHT               , '\033[1m') # aka BOLD
+        self.assertEqual(Style.DIM                  , '\033[2m')
+        self.assertEqual(Style.ITALIC               , '\033[3m')
+        self.assertEqual(Style.UNDERLINE            , '\033[4m')
+        self.assertEqual(Style.BLINK                , '\033[5m')
+        self.assertEqual(Style.INVERTED             , '\033[7m')
+        self.assertEqual(Style.HIDDEN               , '\033[8m')
+        self.assertEqual(Style.STRIKETHROUGH        , '\033[9m')
+        self.assertEqual(Style.NOT_BOLD             , '\033[21m')
+        self.assertEqual(Style.NORMAL               , '\033[22m') # aka NOT_DIM
+        self.assertEqual(Style.NOT_DIM              , '\033[22m')
+        self.assertEqual(Style.NOT_ITALIC           , '\033[23m')
+        self.assertEqual(Style.NOT_UNDERLINE        , '\033[24m')
+        self.assertEqual(Style.NOT_BLINK            , '\033[25m')
+        self.assertEqual(Style.NOT_INVERTED         , '\033[27m')
+        self.assertEqual(Style.NOT_HIDDEN           , '\033[28m')
+        self.assertEqual(Style.NOT_STRIKETHROUGH    , '\033[29m')
+        
 
 if __name__ == '__main__':
     main()

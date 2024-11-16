@@ -21,6 +21,60 @@ def clear_screen(mode=2):
 def clear_line(mode=2):
     return CSI + str(mode) + 'K'
 
+def hsl_to_rgb(h, s, l):
+    # hsl values are in [0, 1], rgb values are in [0, 255]
+    h = float(h)
+    s = float(s)
+    l = float(l)
+
+    h = min(max(h, 0), 1)
+    s = min(max(s, 0), 1)
+    l = min(max(l, 0), 1)
+
+    r, g, b = 0, 0, 0
+
+    if s == 0:
+        r = g = b = l # achromatic
+    else:
+        def hue2rgb(p, q, t):
+            if t < 0: t += 1
+            if t > 1: t -= 1
+            if t < 1/6: return p + (q - p) * 6 * t
+            if t < 1/2: return q
+            if t < 2/3: return p + (q - p) * (2/3 - t) * 6
+            return p
+
+        q = l * (1 + s) if l < 0.5 else l + s - l * s
+        p = 2 * l - q
+        r = hue2rgb(p, q, h + 1/3)
+        g = hue2rgb(p, q, h)
+        b = hue2rgb(p, q, h - 1/3)
+
+    return int(r * 255), int(g * 255), int(b * 255)
+
+def cmyk_to_rgb(c, m, y, k):
+    # cmyk values are in [0, 100], rgb values are in [0, 255]
+    # cap values to 0-100
+    c = min(max(c, 0), 100)
+    m = min(max(m, 0), 100)
+    y = min(max(y, 0), 100)
+    k = min(max(k, 0), 100)
+
+    c = float(c) / 100
+    m = float(m) / 100
+    y = float(y) / 100
+    k = float(k) / 100
+    r, g, b = 0, 0, 0
+
+    r = 255 * (1 - c) * (1 - k)
+    g = 255 * (1 - m) * (1 - k)
+    b = 255 * (1 - y) * (1 - k)
+
+    return int(r), int(g), int(b)
+
+def hex_to_rgb(hex):
+    hex = hex.lstrip('#')
+    return tuple(int(hex[i:i+2], 16) for i in (0, 2, 4))
 
 class AnsiCodes(object):
     def __init__(self):
@@ -30,7 +84,8 @@ class AnsiCodes(object):
         for name in dir(self):
             if not name.startswith('_'):
                 value = getattr(self, name)
-                setattr(self, name, code_to_chars(value))
+                if isinstance(value, int):
+                    setattr(self, name, code_to_chars(value))
 
 
 class AnsiCursor(object):
@@ -67,6 +122,27 @@ class AnsiFore(AnsiCodes):
     LIGHTCYAN_EX    = 96
     LIGHTWHITE_EX   = 97
 
+    def C256(self, value):
+        return '\033[38;5;' + str(value) + 'm'
+
+    def RGB(self, r, g, b):
+        return '\033[38;2;' + str(r) + ';' + str(g) + ';' + str(b) + 'm'
+
+    def HSL(self, h, s, l):
+        # Convert HSL (float) to RGB and then return the ANSI code
+        r, g, b = hsl_to_rgb(h, s, l)
+        return '\033[38;2;' + str(r) + ';' + str(g) + ';' + str(b) + 'm'
+
+    def CMYK(self, c, m, y, k):
+        # Convert CMYK (0-100) to RGB and then return the ANSI code
+        r, g, b = cmyk_to_rgb(c, m, y, k)
+        return '\033[38;2;' + str(r) + ';' + str(g) + ';' + str(b) + 'm'
+
+    def HEX(self, hex_value):
+        # Convert HEX to RGB and then return the ANSI code
+        r, g, b = hex_to_rgb(hex_value)
+        return '\033[38;2;' + str(r) + ';' + str(g) + ';' + str(b) + 'm'
+
 
 class AnsiBack(AnsiCodes):
     BLACK           = 40
@@ -89,12 +165,48 @@ class AnsiBack(AnsiCodes):
     LIGHTCYAN_EX    = 106
     LIGHTWHITE_EX   = 107
 
+    def C256(self, value):
+        return '\033[48;5;' + str(value) + 'm'
+
+    def RGB(self, r, g, b):
+        return '\033[48;2;' + str(r) + ';' + str(g) + ';' + str(b) + 'm'
+
+    def HSL(self, h, s, l):
+        # Convert HSL (float) to RGB and then return the ANSI code
+        r, g, b = hsl_to_rgb(h, s, l)
+        return '\033[48;2;' + str(r) + ';' + str(g) + ';' + str(b) + 'm'
+
+    def CMYK(self, c, m, y, k):
+        # Convert CMYK to RGB and then return the ANSI code
+        r, g, b = cmyk_to_rgb(c, m, y, k)
+        return '\033[48;2;' + str(r) + ';' + str(g) + ';' + str(b) + 'm'
+
+    def HEX(self, hex_value):
+        # Convert HEX to RGB and then return the ANSI code
+        r, g, b = hex_to_rgb(hex_value)
+        return '\033[48;2;' + str(r) + ';' + str(g) + ';' + str(b) + 'm'
+
 
 class AnsiStyle(AnsiCodes):
-    BRIGHT    = 1
-    DIM       = 2
-    NORMAL    = 22
-    RESET_ALL = 0
+    RESET_ALL       = 0
+    BRIGHT          = 1 # aka BOLD
+    DIM             = 2
+    ITALIC          = 3
+    UNDERLINE       = 4
+    BLINK           = 5
+    INVERTED        = 7
+    HIDDEN          = 8
+    STRIKETHROUGH   = 9
+
+    NOT_BOLD            = 21
+    NORMAL              = 22 # aka NOT_DIM
+    NOT_DIM             = 22
+    NOT_ITALIC          = 23
+    NOT_UNDERLINE       = 24
+    NOT_BLINK           = 25
+    NOT_INVERTED        = 27
+    NOT_HIDDEN          = 28
+    NOT_STRIKETHROUGH   = 29
 
 Fore   = AnsiFore()
 Back   = AnsiBack()
