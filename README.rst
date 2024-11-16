@@ -23,15 +23,16 @@ cursor positioning) work under MS Windows.
 Warning
 -------
 
-> [!WARNING]
-> Ksilorama is a fork of `colorama <https://pypi.org/project/colorama/>`_. 
-> This fork was created because the original project is no longer maintained.
-> The goal of ksilorama is to fullfill ANSI escape character sequences.
+Ksilorama is a fork of `colorama <https://pypi.org/project/colorama/>`_. 
+This fork was created because the original project is no longer maintained.
+The goal of ksilorama is to fullfill ANSI escape character sequences.
+
+Changes
+-------
 
 Here are the differences between Ksilorama and colorama:
 
-- None
-
+- Added support for Python 3.13
 
 Installation
 ------------
