@@ -16,7 +16,7 @@ jobs:
         exclude:
           - os: macos-latest # Latest macOS dropped support for Python 3.7
             python-version: "3.7"
-          - os: ubuntu-22.04 # Latest Ubuntu dropped support for Python 3.7
+          - os: ubuntu-latest # Latest Ubuntu dropped support for Python 3.7
             python-version: "3.7"
         include:
           # Add new helper variables to existing jobs
