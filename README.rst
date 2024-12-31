@@ -52,13 +52,13 @@ Here are the differences between Ksilorama and colorama:
     - 256 colors (C256)
     - RGB colors (RGB)
     - HSL colors (HSL)
-    - CMYL colors (CMYL)
+    - CMYK colors (CMYK)
     - HEX colors (HEX)
 - In AnsiBack added:
     - 256 colors (C256)
     - RGB colors (RGB)
     - HSL colors (HSL)
-    - CMYL colors (CMYL)
+    - CMYK colors (CMYK)
     - HEX colors (HEX)
 
 Installation
