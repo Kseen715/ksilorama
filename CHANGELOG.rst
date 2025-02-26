@@ -1,6 +1,24 @@
-0.4.7 Current release
+0.4.11 Current release
+  * Fixed PyPI metadata to include the correct project URL.
+0.4.10
+  * Fixed typo in README: change "fullfill" to "fulfill"
+0.4.9
+  * Code refactoring and cleanup
+0.4.8
+  * In AnsiStyle added: 
+    ITALIC, UNDERLINE, BLINK, INVERTED, HIDDEN, STRIKETHROUGH, RESET_BOLD, 
+    RESET_DIM, RESET_ITALIC, RESET_UNDERLINE, RESET_BLINK, RESET_INVERTED, 
+    RESET_HIDDEN, RESET_STRIKETHROUGH
+  * In AnsiFore added:, 256 colors (C256), 
+    RGB colors (RGB), HSL colors (HSL), CMYK colors (CMYK), HEX colors (HEX), 
+    In AnsiBack added:, 256 colors (C256), RGB colors (RGB), HSL colors (HSL), 
+    CMYK colors (CMYK), HEX colors (HEX)
+0.4.7
   * Fix of all known issues with Github Actions CI, which was failing to build
     on all platforms.
+  * Removed official pure-python 2.7 support, as it can't be tested on CI
+  * Added support for Python 3.13
+  * Moved Python 3.7 CI tests to legacy MacOS 13.6, as Python 3.7 is EOL
 0.4.6
   * https://github.com/tartley/colorama/pull/139 Add alternative to 'init()',
     called 'just_fix_windows_console'. This fixes many longstanding problems
