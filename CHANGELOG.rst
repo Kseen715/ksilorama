@@ -1,7 +1,7 @@
 0.4.11 Current release
   * Fixed PyPI metadata to include the correct project URL.
 0.4.10
-  * Fixed typo in README: change "fullfill" to "fulfill"
+  * Fixed typo in README
 0.4.9
   * Code refactoring and cleanup
 0.4.8
